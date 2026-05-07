@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: color-checker-service
+  namespace: firstpractice
+  labels:
+    app: color-checker-service
+
+spec:
+  replicas: 5   
+  selector:
+    matchLabels:
+      app: color-checker-service
+
+  template:
+    metadata:
+      labels:
+        app: color-checker-service
+    spec:
+      containers:
+      - name: color-checker-service
+        image: oredollar/color-checker-service:latest
