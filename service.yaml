@@ -1,7 +1,6 @@
 apiVersion: v1
 kind: Service
-metadata:
-  namespace: firstpractice 
+metadata: 
   name: color-checker
   labels:
     app: color-checker
