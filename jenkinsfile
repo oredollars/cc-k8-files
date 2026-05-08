@@ -27,7 +27,7 @@ pipeline {
                             sh "git add ."
                             sh "git commit -m 'Done by Jenkins Job change manifest: ${env.BUILD_NUMBER}'"
                             sh '''
-                                git remote set-url origin https://$GIT_USERNAME:$GIT_PASSWORD@https://github.com/oredollars/cc-k8-files.git
+                                git remote set-url origin https://$GIT_USERNAME:$GIT_PASSWORD@github.com/oredollars/cc-k8-files.git
                                 git push origin HEAD:main
                             '''
                         }
