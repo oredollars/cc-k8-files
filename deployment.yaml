@@ -18,4 +18,4 @@ spec:
     spec:
       containers:
       - name: color-checker-service
-        image: oredollar/color-checker-service:latest
+        image: oredollar/color-checker-service:1.0.0-6
