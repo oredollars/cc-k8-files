@@ -1,6 +1,14 @@
 pipeline {
     agent any
 
+    parameters {
+        string(
+            name: 'DOCKER_TAG',
+            defaultValue: 'latest',
+            description: 'Docker image tag'
+        )
+    }
+
     stages {
 
         stage('Cleanup workspace') {
@@ -21,6 +29,8 @@ pipeline {
             steps {
                 script {
 
+                    echo "DOCKER_TAG is ${DOCKER_TAG}"
+
                     withCredentials([
                         usernamePassword(
                             credentialsId: 'githubcred',
@@ -33,7 +43,11 @@ pipeline {
                         git config user.email "daiyepeku@gmail.com"
                         git config user.name "daniel"
 
+                        echo "Updating deployment.yaml with tag: $DOCKER_TAG"
+
                         sed -i "s+oredollar/color-checker-service:.*+oredollar/color-checker-service:${DOCKER_TAG}+g" deployment.yaml
+
+                        cat deployment.yaml
 
                         git add .
 
